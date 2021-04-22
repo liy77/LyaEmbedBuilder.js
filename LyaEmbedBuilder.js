@@ -45,7 +45,7 @@ module.exports = class LyaEmbedBuilder {
     }
 
     thumbnail(icon, options = {}) {
-        this._thumbnail = {icon, height: options.height, width: options.width};
+        this._thumbnail = {url: icon, height: options.height, width: options.width};
         return this;
     }
 
