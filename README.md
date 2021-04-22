@@ -6,7 +6,7 @@ Crie embeds facilmente!
 ```js
 const LyaEmbedBuilder = require("./LyaEmbedBuilder");
 
-let embed = new LyaEmbed.Builder();
+let embed = new LyaEmbedBuilder();
 embed.title("Título da embed!");
 embed.description("Descrição da embed");
 
