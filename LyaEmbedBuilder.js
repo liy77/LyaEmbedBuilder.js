@@ -19,16 +19,19 @@ module.exports = class LyaEmbedBuilder {
     }
 
     title(title) {
+        if (title.length > 256) throw new Error("O título da embed só pode ter no máximo 256 carácteres!")
         this._title = title;
         return this;
     }
 
     description(desc) {
+        if (desc.length > 2048) throw new Error("A descrição não pode passar de 2048 carácteres!");
         this._description = desc;
         return this;
     }
 
     field(name, value, inline = false) {
+        if (this._fields.length >= 25) throw new Error("A embed só pode ter até 25 fields!");
         if (name.length >= 256) throw new Error("O nome do field só pode ter no máximo 256 carácteres!");
         if (name.length >= 1024) throw new Error("A descrição do field não pode passar de 2048 carácteres!");
 
@@ -47,6 +50,7 @@ module.exports = class LyaEmbedBuilder {
     }
 
     footer(text, icon) {
+        if (text.length > 2048) throw new Error("O footer não pode passar de 2048 carácteres!");
         this._footer = {text, icon};
         return this;
     }
@@ -77,11 +81,6 @@ module.exports = class LyaEmbedBuilder {
     }
 
     get create() {
-        if (this._title.length > 256) throw new Error("O título da embed só pode ter no máximo 256 carácteres!")
-        if (this._description.length > 2048) throw new Error("A descrição não pode passar de 2048 carácteres!");
-        if (this._footer.text.length > 2048) throw new Error("O footer não pode passar de 2048 carácteres!");
-        if (this._fields.length >= 25) throw new Error("A embed só pode ter até 25 fields!");
-
         return {
             embed: {
                 title: this._title,
