@@ -1,6 +1,6 @@
 // Criado por lrd#2774
 
-const Util = require("../util");
+const Util = require("./util");
 
 module.exports = class LyaEmbedBuilder {
     constructor(options = {}) {
