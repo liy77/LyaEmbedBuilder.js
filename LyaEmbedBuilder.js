@@ -40,7 +40,7 @@ module.exports = class LyaEmbedBuilder {
     }
 
     author(name, icon, url) {
-        this._author = {name, icon, url};
+        this._author = {name: name, icon_url: icon, url: url};
         return this;
     }
 
@@ -66,7 +66,7 @@ module.exports = class LyaEmbedBuilder {
     }
 
     image(imgURL, options = {}) {
-        this._image = {imgURL, height: options.height, width: options.width};
+        this._image = {url: imgURL, height: options.height, width: options.width};
         return this;
     }
 
@@ -99,4 +99,20 @@ module.exports = class LyaEmbedBuilder {
         }
     }
 
+    get toJson() {
+        return {
+            title: this._title,
+            type: this._type,
+            description: this._description,
+            url: this._url,
+            timestamp: this._timestamp,
+            color: this._color,
+            footer: this._footer,
+            image: this._image,
+            thumbnail: this._thumbnail,
+            video: this._video,
+            author: this._author,
+            fields: this._fields
+        }
+    }
 }
